@@ -5,8 +5,11 @@ import './style/App.css';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
-import Search from './pages/Search';
-import Nav from './navigation/Nav';
+import Search from './pages/search';
+import Nav from './navigation/nav';
+
+//Router imports
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
