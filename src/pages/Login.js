@@ -28,15 +28,10 @@ export default function Register() {
   //error handlers
   const [form, setForm] = useState(INITIAL_STATE);
   const [error, setError] = useState(INITIAL_STATE);
-
-  //Loading Setter
-  const [loading, setLoading] = useState(false);
-
   //snackbar
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     axios({
       method: 'GET',
       url: 'https://fakestoreapi.com/users',
@@ -92,11 +87,6 @@ export default function Register() {
   };
   return (
     <div>
-      {loading && (
-        <div>
-          <p>Loading...</p>
-        </div>
-      )}
       <div className="centered">
         <form className="layout" onSubmit={handleSubmit}>
           <Box
