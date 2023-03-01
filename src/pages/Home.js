@@ -1,7 +1,7 @@
 import '../style/Home.css';
 
 function Home() {
-  return <div></div>;
+  return <div>ghighidi ghighidi ghighidi</div>;
 }
 
 export default Home;
