@@ -1,7 +1,20 @@
 import '../style/Search.css';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import React, { useEffect } from 'react';
+//Axios
+import axios from 'axios';
+
 function Search() {
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: 'https://fakestoreapi.com/products',
+    }).then((res) => {
+      console.log(res.data);
+    });
+  }, []);
+
   return (
     <div>
       <div className="centerSearch">

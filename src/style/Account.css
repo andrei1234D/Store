@@ -4,3 +4,9 @@
   font-size: 25px;
   margin-top: 5%;
 }
+.toRight {
+  display: flex;
+  justify-content: right;
+  margin-top: 15px;
+  margin-right: 25px;
+}

@@ -54,7 +54,10 @@ export default function Account() {
             <Button
               variant="contained"
               type="submit"
-              sx={{ width: '100px', backgroundColor: '#2FA4FF' }}
+              sx={{
+                width: '100px',
+                backgroundColor: '#2FA4FF',
+              }}
             >
               Log-out
             </Button>
