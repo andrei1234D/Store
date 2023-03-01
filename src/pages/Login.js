@@ -1,6 +1,6 @@
 import '../style/Login.css';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // MUI imports
 import { Button } from '@mui/material';
@@ -11,6 +11,9 @@ import Snackbar from '@mui/material/Snackbar';
 // Internal imports
 import { useNavigate } from 'react-router-dom';
 
+//Axios
+import axios from 'axios';
+
 const MARGIN_BOTTOM = { marginBottom: '5%' };
 
 const FORM_FIELDS = ['username', 'password'];
@@ -18,15 +21,30 @@ const INITIAL_STATE = {
   username: '',
   password: '',
 };
-
+let usernameArray = [];
+let passwordArray = [];
 export default function Register() {
   const navigate = useNavigate();
   //error handlers
   const [form, setForm] = useState(INITIAL_STATE);
   const [error, setError] = useState(INITIAL_STATE);
 
+  //Loading Setter
+  const [loading, setLoading] = useState(false);
+
   //snackbar
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    axios({
+      method: 'GET',
+      url: 'https://fakestoreapi.com/users',
+    }).then((res) => {
+      res.data.forEach((item) => usernameArray.push(item.username));
+      res.data.forEach((item) => passwordArray.push(item.password));
+    });
+  }, []);
 
   const validateSubmit = () => {
     const errors = {};
@@ -52,6 +70,13 @@ export default function Register() {
 
     validateSubmit();
 
+    for (let i = 0; i <= 9; i++) {
+      if (form.username === usernameArray[i])
+        localStorage.setItem('username', form.username);
+      if (form.password === passwordArray[i])
+        localStorage.setItem('password', form.password);
+    }
+
     if (Object.keys(error).length === 0) {
       if (
         form.username === localStorage.getItem('username') &&
@@ -65,9 +90,13 @@ export default function Register() {
       }
     }
   };
-
   return (
     <div>
+      {loading && (
+        <div>
+          <p>Loading...</p>
+        </div>
+      )}
       <div className="centered">
         <form className="layout" onSubmit={handleSubmit}>
           <Box
