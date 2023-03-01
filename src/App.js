@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import Search from './pages/search';
+import Account from './pages/Account';
 import Nav from './navigation/nav';
 
 //Router imports
@@ -21,6 +22,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/ProductDetails" element={<ProductDetails />} />
           <Route path="/Search" element={<Search />} />
+          <Route path="/Account" element={<Account />} />
         </Routes>
       </Router>
     </div>

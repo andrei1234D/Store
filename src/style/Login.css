@@ -9,18 +9,3 @@
   border-radius: 5px;
   margin-top: 10%;
 }
-.layout {
-  background: #f7f8f8; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to top,
-    black,
-    #ff5733,
-    black
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    black,
-    #ff5733,
-    black
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
