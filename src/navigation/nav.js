@@ -7,21 +7,21 @@ export default function Nav() {
   return (
     <nav>
       <ul className="nav-links">
-        <Link to="/Home" className="link">
+        <Link to="/" className="link">
           <li>Home</li>
         </Link>
         {localStorage.getItem('isLoggedIn') === 'false' && (
-          <Link to="/Login" className="link">
+          <Link to="/login" className="link">
             <li>Login</li>
           </Link>
         )}
         {localStorage.getItem('isLoggedIn') === 'true' && (
-          <Link to="/Search" className="link">
+          <Link to="/search" className="link">
             <li>Search</li>
           </Link>
         )}
         {localStorage.getItem('isLoggedIn') === 'true' && (
-          <Link to="/Account" className="link">
+          <Link to="/account" className="link">
             <li>Account</li>
           </Link>
         )}
