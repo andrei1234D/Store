@@ -12,7 +12,6 @@ import ProtectedRoutes from './ProtectedRoutes';
 
 //Router imports
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-localStorage.setItem('isLoggedIn', 'false');
 function App() {
   return (
     <div>
