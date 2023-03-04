@@ -1,17 +1,20 @@
 import '../style/Search.css';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 //Axios
 import axios from 'axios';
 
 function Search() {
+  const [data, setData] = useState([]);
+
   useEffect(() => {
     axios({
       method: 'GET',
       url: 'https://fakestoreapi.com/products',
     }).then((res) => {
       console.log(res.data);
+      setData(res.data);
     });
   }, []);
 
@@ -39,6 +42,11 @@ function Search() {
           Search
         </Button>
       </div>
+      {data.forEach((product) => {
+        <div key={product.id} className="card">
+          <div img src={product.image} alt="#"></div>
+        </div>;
+      })}
     </div>
   );
 }
