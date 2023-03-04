@@ -43,7 +43,7 @@ export default function Account() {
   //logout button press
   const handleLogOut = () => {
     localStorage.setItem('isLoggedIn', 'false');
-    navigate('/Register');
+    navigate('/login');
     window.location.reload(true);
   };
   return (
