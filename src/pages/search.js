@@ -13,13 +13,12 @@ function Search() {
       method: 'GET',
       url: 'https://fakestoreapi.com/products',
     }).then((res) => {
-      console.log(res.data);
       setData(res.data);
     });
   }, []);
-
   return (
     <div>
+      {console.log(data)}
       <div className="centerSearch">
         <TextField
           id="filled-error-helper-text"
@@ -42,11 +41,15 @@ function Search() {
           Search
         </Button>
       </div>
-      {data.forEach((product) => {
-        <div key={product.id} className="card">
-          <div img src={product.image} alt="#"></div>
-        </div>;
-      })}
+      {data.length !== 0 ? (
+        data.forEach((product) => {
+          <div key={product.id} className="card">
+            <div img src={product.image} alt="#"></div>
+          </div>;
+        })
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }
