@@ -9,6 +9,7 @@ import Search from './pages/Search';
 import Account from './pages/Account';
 import Nav from './navigation/nav';
 import ProtectedRoutes from './ProtectedRoutes';
+import ProductPage from './pages/ProductPage';
 
 //Router imports
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
+          <Route path="/ProductPage" element={<ProductPage />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/search" element={<Search />} />
             <Route path="/account" element={<Account />} />

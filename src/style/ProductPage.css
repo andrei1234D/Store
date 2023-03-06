@@ -1,0 +1,22 @@
+.display {
+  display: flex;
+  justify-content: left;
+}
+img {
+  height: 400px;
+  width: 400px;
+}
+img:hover {
+  transform: scale(1);
+}
+.title {
+  text-align: center;
+  font-size: 45px;
+}
+.buyNow {
+  display: flex;
+  justify-content: bottom;
+  margin-left: auto;
+  bottom: 0px;
+  margin-top: auto;
+}
