@@ -19,19 +19,19 @@ function Search() {
   return (
     <div>
       {console.log(data)}
-      <div className="centerSearch">
+      <div className='centerSearch'>
         <TextField
-          id="filled-error-helper-text"
-          label="Search field"
-          variant="filled"
-          color="secondary"
-          size="small"
+          id='filled-error-helper-text'
+          label='Search field'
+          variant='filled'
+          color='secondary'
+          size='small'
         />
       </div>
-      <div className="centerSearch">
+      <div className='centerSearch'>
         <Button
-          variant="contained"
-          type="submit"
+          variant='contained'
+          type='submit'
           sx={{
             width: '100px',
             backgroundColor: '#2FA4FF',
@@ -42,11 +42,11 @@ function Search() {
         </Button>
       </div>
       {data.length !== 0 ? (
-        data.forEach((product) => {
-          <div key={product.id} className="card">
-            <div img src={product.image} alt="#"></div>
-          </div>;
-        })
+        data.map((product) => (
+          <div key={product.id} className='card'>
+            <img src={product.image} alt='#' />
+          </div>
+        ))
       ) : (
         <p>Loading...</p>
       )}
