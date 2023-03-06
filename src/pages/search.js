@@ -18,7 +18,6 @@ function Search() {
   }, []);
   return (
     <div>
-      {console.log(data)}
       <div className="centerSearch">
         <TextField
           id="filled-error-helper-text"
@@ -41,15 +40,24 @@ function Search() {
           Search
         </Button>
       </div>
-      {data.length !== 0 ? (
-        data.forEach((product) => {
-          <div key={product.id} className="card">
-            <div img src={product.image} alt="#"></div>
-          </div>;
-        })
-      ) : (
-        <p>Loading...</p>
-      )}
+      <div className="productContainer">
+        {data.length !== 0 ? (
+          data.map((product) => (
+            <div key={product.id} className="card">
+              <div>
+                <img src={product.image} alt="#" />
+              </div>
+              <p>
+                {product.title}
+                <br></br>
+                {product.price} USD
+              </p>
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 }

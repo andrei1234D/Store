@@ -8,5 +8,30 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 20px;
+  margin: 20px, 0;
+}
+img {
+  height: 250px;
+  width: 250px;
+}
+.cardDescription {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.productContainer {
+  width: 100%;
+  min-height: 80vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  padding: 10px;
+}
+img {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+img:hover {
+  transition-delay: 10;
+  transform: scale(1.15);
 }
