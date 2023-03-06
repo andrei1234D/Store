@@ -48,7 +48,7 @@ function Search() {
                 <img src={product.image} alt="#" />
               </div>
               <p>
-                {product.title}
+                /{product.title}
                 <br></br>
                 {product.price} USD
               </p>
