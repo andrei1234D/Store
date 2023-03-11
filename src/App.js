@@ -10,6 +10,7 @@ import Account from './pages/Account';
 import Nav from './navigation/nav';
 import ProtectedRoutes from './ProtectedRoutes';
 import ProductPage from './pages/ProductPage';
+import Cart from './pages/Cart';
 
 //Router imports
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -27,6 +28,7 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/account" element={<Account />} />
             <Route path="/productDetails" element={<ProductDetails />} />
+            <Route path="/Cart" element={<Cart />} />
           </Route>
         </Routes>
       </Router>
