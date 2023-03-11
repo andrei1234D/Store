@@ -1,23 +1,35 @@
 import '../style/ProductPage.css';
 import { Button } from '@mui/material';
-
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 function ProductPage() {
+  const [data, setData] = useState([]);
+
+  const params = useParams();
+  let id = Object.values(params);
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: `https://fakestoreapi.com/products/${id}`,
+    }).then((res) => {
+      setData(res.data);
+    });
+  }, []);
   return (
     <div>
-      <p className="title">Titlul Produsului</p>
+      <p className="title">{data.title}</p>
       <div className="display">
-        <img
-          src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
-          alt="#"
-        />
+        <img src={data.image} className="image" alt="#" />
         <div style={{ fontSize: '25px' }}>
-          Rating:{}({}reviews)
+          Rating:{data?.rating?.rate}({data?.rating?.count}reviews)
           <br></br>
-          <h1 style={{ color: 'rgba(17, 94, 130)' }}>price</h1> {}
+          <h1 style={{ color: 'rgba(17, 94, 130)' }}>Price</h1> {data.price}USD
         </div>
         <div className="buyNow">
           <p>
-            Buy Now<br></br>price
+            Buy Now<br></br>
+            {data.price}USD
           </p>
           <Button
             variant="contained"

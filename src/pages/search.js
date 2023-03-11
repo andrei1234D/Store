@@ -2,6 +2,7 @@ import '../style/Search.css';
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 //Axios
 import axios from 'axios';
 
@@ -45,7 +46,9 @@ function Search() {
           data.map((product) => (
             <div key={product.id} className="card">
               <div>
-                <img src={product.image} alt="#" />
+                <Link to={`/product/${product.id}`}>
+                  <img src={product.image} className="images" alt="#" />
+                </Link>
               </div>
               <p>
                 {product.title}

@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="/ProductPage" element={<ProductPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/search" element={<Search />} />
             <Route path="/account" element={<Account />} />

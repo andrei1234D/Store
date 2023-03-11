@@ -2,12 +2,12 @@
   display: flex;
   justify-content: left;
 }
-img {
+.image {
   height: 400px;
   width: 400px;
 }
-img:hover {
-  transform: scale(1);
+.image:hover {
+  cursor: pointer;
 }
 .title {
   text-align: center;

@@ -23,13 +23,13 @@
   justify-items: center;
   padding: 10px;
 }
-img {
+.images {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   height: 225px;
   width: 225px;
 }
-img:hover {
+.images:hover {
   transition-delay: 10;
   transform: scale(1.15);
 }
