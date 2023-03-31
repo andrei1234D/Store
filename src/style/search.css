@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 20px, 0;
+  padding: 5%;
 }
 .cardDescription {
   display: flex;
@@ -17,11 +17,19 @@
 }
 .productContainer {
   width: 100%;
-  min-height: 80vh;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-  padding: 10px;
+  border-style: solid;
+  background-color: white;
+  border-color: rgb(5, 152, 157);
+  border-radius: 50px;
+  border-width: 5px;
+  margin-left: 15%;
+  height: auto;
+  margin-top: 3%;
+  width: 70%;
+  margin-right: 15%;
 }
 .images {
   cursor: pointer;

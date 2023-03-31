@@ -10,6 +10,7 @@ import Account from './pages/Account';
 import Nav from './navigation/nav';
 import ProtectedRoutes from './ProtectedRoutes';
 import ProductPage from './pages/ProductPage';
+import ProductImage from './pages/ProductImage';
 import Cart from './pages/Cart';
 
 //Router imports
@@ -24,6 +25,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/product/:id/:url" element={<ProductImage />} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/search" element={<Search />} />
             <Route path="/account" element={<Account />} />

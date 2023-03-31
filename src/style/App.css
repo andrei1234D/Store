@@ -1,0 +1,10 @@
+* {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+body {
+  background-color: rgba(6, 115, 241, 0.5);
+}

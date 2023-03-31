@@ -17,3 +17,8 @@ nav {
   text-decoration: none;
   color: black;
 }
+.cartLink {
+  text-decoration: none;
+  color: black;
+  list-style: none;
+}

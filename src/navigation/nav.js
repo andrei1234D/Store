@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import { AiOutlineShoppingCart } from 'react-icons/ai';
 import '../style/Nav.css';
 
 export default function Nav() {
@@ -26,6 +26,13 @@ export default function Nav() {
           </Link>
         )}
       </ul>
+      {localStorage.getItem('isLoggedIn') === 'true' && (
+        <Link to="/cart" className="cartLink">
+          <li>
+            <AiOutlineShoppingCart size={50} />
+          </li>
+        </Link>
+      )}
     </nav>
   );
 }

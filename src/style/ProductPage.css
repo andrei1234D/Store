@@ -5,6 +5,10 @@
 .image {
   height: 400px;
   width: 400px;
+  border-style: solid;
+  border-color: black;
+  padding: 2%;
+  background-color: white;
 }
 .image:hover {
   cursor: pointer;

@@ -22,7 +22,7 @@ function Search() {
       <div className="centerSearch">
         <TextField
           id="filled-error-helper-text"
-          label="Search field"
+          label="Search..."
           variant="filled"
           color="secondary"
           size="small"
@@ -58,7 +58,13 @@ function Search() {
             </div>
           ))
         ) : (
-          <p>Loading...</p>
+          <p
+            style={{
+              fontSize: '50px',
+            }}
+          >
+            Loading...
+          </p>
         )}
       </div>
     </div>
