@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 function ProductPage() {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -19,43 +20,44 @@ function ProductPage() {
     });
   }, []);
 
-  let product = [
-    {
-      title: data.title,
-      price: data.price,
-      image: data.image,
-    },
-  ];
+  let product = {
+    title: data.title,
+    price: data.price,
+    image: data.image,
+  };
+
   localStorage.setItem('ActualProduct', JSON.stringify(product));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let productCart = JSON.parse(localStorage.getItem('CartItems')) || '[]';
+    let productCart = JSON.parse(localStorage.getItem('CartItems')) || [];
+
+    //TODO: Extra check if product already exists in the cart, do not add it or just increase quantity
+
     productCart.push(product);
-    console.log(productCart);
     localStorage.setItem('CartItems', JSON.stringify(productCart));
     navigate('/cart');
   };
 
   return (
     <div>
-      <p className="title">{data.title}</p>
-      <div className="display">
+      <p className='title'>{data.title}</p>
+      <div className='display'>
         <Link to={`${data.image}`}>
-          <img src={data.image} className="image" alt="#" />
+          <img src={data.image} className='image' alt='#' />
         </Link>
         <div style={{ fontSize: '25px', marginLeft: '5%' }}>
           Rating:{data?.rating?.rate}({data?.rating?.count}reviews)
           <br></br>
           <h1>Price:{data.price}USD</h1>
         </div>
-        <div className="buyNow" onSubmit={handleSubmit}>
+        <div className='buyNow' onSubmit={handleSubmit}>
           <p>
             Buy Now<br></br>
             {data.price}USD
           </p>
           <Button
-            variant="contained"
+            variant='contained'
             onClick={handleSubmit}
             sx={{
               width: '200px',

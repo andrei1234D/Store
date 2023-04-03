@@ -1,11 +1,24 @@
 import '../style/Cart.css';
 
 function Cart() {
-  let product = JSON.parse(localStorage.getItem('CartItems'));
+  let products = JSON.parse(localStorage.getItem('CartItems'));
+
+  if (!products || products?.length === 0) {
+    return (
+      <div style={{ textAlign: 'center' }}>
+        <h1 style={{ textAlign: 'center' }}>Your Products</h1>
+        <div className='cart'>
+          <h1>No products added yet</h1>
+          <h1>Go to Search to begin shopping</h1>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1 style={{ textAlign: 'center' }}>Your Products</h1>
-      <div className="cart">
+      <div className='cart'>
         <div style={{ padding: '1%' }}>
           <div
             style={{
@@ -15,16 +28,16 @@ function Cart() {
               borderColor: 'black',
             }}
           >
-            {product.map((item) => (
+            {products?.map((item) => (
               <div
-                id="productContainer"
+                id='productContainer'
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                 }}
               >
                 <div style={{ marginRight: '5%', marginLeft: '2%' }}>
-                  <img src={item.image} alt="#" width="90px" height="90px" />
+                  <img src={item.image} alt='#' width='90px' height='90px' />
                 </div>
                 <div style={{ marginRight: '5%', marginLeft: '5%' }}>
                   {item.title}
