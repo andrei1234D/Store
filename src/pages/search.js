@@ -53,7 +53,7 @@ function Search() {
               <p>
                 {product.title}
                 <br></br>
-                {product.price} USD
+                <div style={{ color: 'red' }}>{product.price} USD</div>
               </p>
             </div>
           ))

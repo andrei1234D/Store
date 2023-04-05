@@ -12,6 +12,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import ProductPage from './pages/ProductPage';
 import ProductImage from './pages/ProductImage';
 import Cart from './pages/Cart';
+import Payment from './pages/Payment';
 
 //Router imports
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/account" element={<Account />} />
             <Route path="/productDetails" element={<ProductDetails />} />
             <Route path="/Cart" element={<Cart />} />
+            <Route path="/Payment" element={<Payment />} />
           </Route>
         </Routes>
       </Router>
