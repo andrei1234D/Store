@@ -26,7 +26,14 @@ function ProductPage() {
     image: data.image,
     quantity: 1,
   };
-  console.log(product.productId);
+  if (product.title < 1) {
+    return (
+      <div>
+        <h1>Loading</h1>
+      </div>
+    );
+  }
+
   localStorage.setItem('ActualProduct', JSON.stringify(product));
   let itemFound = false;
   const handleSubmit = (e) => {

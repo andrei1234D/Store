@@ -2,6 +2,9 @@ import '../style/Cart.css';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { ImBin2 } from 'react-icons/im';
+import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai';
+
 function Cart() {
   const navigate = useNavigate();
 
@@ -22,6 +25,20 @@ function Cart() {
     e.preventDefault();
 
     navigate('/payment');
+  };
+
+  const handleRemoveSubmit = (e) => {
+    e.preventDefault();
+    products.splice(0, 1);
+    localStorage.setItem('CartItems', JSON.stringify(products));
+
+    navigate('/cart');
+  };
+  const handleRemoveAllSubmit = (e) => {
+    e.preventDefault();
+
+    localStorage.setItem('CartItems', '[]');
+    navigate('/cart');
   };
 
   return (
@@ -46,11 +63,12 @@ function Cart() {
                   marginBottom: '1%',
                 }}
               >
+                {console.log(item)}
                 <div
                   style={{
                     marginRight: '2%',
                     marginLeft: '1%',
-                    width: '9%',
+                    width: '10%',
                     padding: '1%',
                   }}
                 >
@@ -61,8 +79,35 @@ function Cart() {
                 <div style={{ marginLeft: '1%', width: '60%' }}>
                   {item.title}
                 </div>
-                <div style={{ width: '10%' }}>x{item.quantity}</div>
-                <div>{(item.price * item.quantity).toFixed(2)} USD</div>
+                <div
+                  id="quantityDiv"
+                  style={{
+                    width: '10%',
+                    textAlign: 'center',
+                  }}
+                >
+                  <AiFillMinusSquare
+                    size="20px"
+                    className="quantityChange"
+                    style={{ color: 'red' }}
+                  />
+                  <div className="quantity">{item.quantity}</div>
+                  <AiFillPlusSquare
+                    size="20px"
+                    style={{ color: 'green' }}
+                    className="quantityChange"
+                  />
+                </div>
+                <div style={{ width: '10%', textAlign: 'center' }}>
+                  {(item.price * item.quantity).toFixed(2)}
+                  <br></br> USD
+                </div>
+
+                <ImBin2
+                  size={30}
+                  className="removeButton"
+                  onClick={handleRemoveSubmit}
+                />
               </div>
             ))}
           </div>
@@ -74,8 +119,8 @@ function Cart() {
         <div
           id="buyNowDiv"
           style={{
-            marginLeft: '70%',
             padding: '1%',
+            marginLeft: '70% ',
           }}
         >
           <Button
@@ -92,13 +137,18 @@ function Cart() {
           </Button>
           <p
             style={{
-              fontSize: '4VH',
+              fontSize: '3vh',
               display: 'flex',
               justifyContent: 'left',
               color: 'red',
             }}
           >
             {moneyYouNeedToPay.toFixed(2)}USD
+          </p>
+        </div>
+        <div id="removeAllDiv">
+          <p onClick={handleRemoveAllSubmit} className="clearAllBin">
+            Clear All
           </p>
         </div>
       </div>

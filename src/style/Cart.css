@@ -10,3 +10,24 @@
   height: auto;
   margin-top: 3%;
 }
+
+.removeButton {
+  color: #f699cd;
+  width: 10%;
+  cursor: pointer;
+}
+.clearAllBin {
+  text-align: right;
+  padding: 1%;
+  font-size: 30px;
+  cursor: pointer;
+}
+.quantityChange {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 auto;
+}
+.quantity {
+  display: inline-block;
+  margin: 0 auto;
+}
