@@ -22,7 +22,7 @@
   justify-items: center;
   border-style: solid;
   background-color: white;
-  border-color: rgb(5, 152, 157);
+  border-color: var(--border_color);
   border-radius: 50px;
   border-width: 5px;
   margin-left: 15%;

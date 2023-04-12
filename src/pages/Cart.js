@@ -2,7 +2,7 @@ import '../style/Cart.css';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { ImBin2 } from 'react-icons/im';
+import { ImBin } from 'react-icons/im';
 import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai';
 
 function Cart() {
@@ -27,13 +27,37 @@ function Cart() {
     navigate('/payment');
   };
 
-  const handleRemoveSubmit = (e) => {
-    e.preventDefault();
-    products.splice(0, 1);
+  const handleRemoveSubmit = (id) => {
+    products = products.filter((itemToRemove) => itemToRemove.productId !== id);
     localStorage.setItem('CartItems', JSON.stringify(products));
 
     navigate('/cart');
   };
+
+  const handleAddSubmit = (id) => {
+    products.forEach((item) => {
+      if (id === item.productId) item.quantity = item.quantity + 1;
+    });
+
+    localStorage.setItem('CartItems', JSON.stringify(products));
+
+    navigate('/cart');
+  };
+  const handleSubtractSubmit = (id) => {
+    products.forEach((item) => {
+      if (id === item.productId && item.quantity === 1) {
+        products = products.filter(
+          (itemToRemove) => itemToRemove.productId !== id
+        );
+        localStorage.setItem('CartItems', JSON.stringify(products));
+      } else if (id === item.productId) item.quantity = item.quantity - 1;
+    });
+
+    localStorage.setItem('CartItems', JSON.stringify(products));
+
+    navigate('/cart');
+  };
+
   const handleRemoveAllSubmit = (e) => {
     e.preventDefault();
 
@@ -60,10 +84,13 @@ function Cart() {
                   alignItems: 'center',
                   borderStyle: 'solid',
                   borderColor: 'black',
+                  borderTop: 'none',
+                  borderLeft: 'none',
+                  borderRight: 'none',
                   marginBottom: '1%',
+                  backgroundColor: 'white',
                 }}
               >
-                {console.log(item)}
                 <div
                   style={{
                     marginRight: '2%',
@@ -89,13 +116,17 @@ function Cart() {
                   <AiFillMinusSquare
                     size="20px"
                     className="quantityChange"
-                    style={{ color: 'red' }}
+                    style={{ color: 'var(--button_background_color)' }}
+                    onClick={() => handleSubtractSubmit(item.productId)}
                   />
-                  <div className="quantity">{item.quantity}</div>
+                  <div className="quantity">
+                    <pre style={{ fontSize: '20px' }}> {item.quantity} </pre>
+                  </div>
                   <AiFillPlusSquare
                     size="20px"
-                    style={{ color: 'green' }}
+                    style={{ color: 'var(--button_background_color)' }}
                     className="quantityChange"
+                    onClick={() => handleAddSubmit(item.productId)}
                   />
                 </div>
                 <div style={{ width: '10%', textAlign: 'center' }}>
@@ -103,10 +134,10 @@ function Cart() {
                   <br></br> USD
                 </div>
 
-                <ImBin2
+                <ImBin
                   size={30}
                   className="removeButton"
-                  onClick={handleRemoveSubmit}
+                  onClick={() => handleRemoveSubmit(item.productId)}
                 />
               </div>
             ))}
@@ -120,36 +151,64 @@ function Cart() {
           id="buyNowDiv"
           style={{
             padding: '1%',
-            marginLeft: '70% ',
+            marginLeft: '60% ',
           }}
         >
+          <div
+            id="productContainer"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              borderTop: 'none',
+              borderLeft: 'none',
+              borderRight: 'none',
+              marginBottom: '1%',
+              backgroundColor: 'white',
+            }}
+          ></div>
+          <pre
+            style={{
+              ':hover': {
+                bgcolor: 'var(--button_hover)',
+                color: 'var(--button_hover_text)',
+              },
+              fontSize: '25px',
+              display: 'flex',
+              justifyContent: 'left',
+              fontFamily: 'Zen Dots',
+            }}
+          >
+            Total: {moneyYouNeedToPay.toFixed(2)}
+            <div
+              style={{
+                fontSize: '20px',
+                marginTop: 'auto',
+              }}
+            >
+              USD
+            </div>
+          </pre>
           <Button
             variant="contained"
             onClick={handleSubmit}
             sx={{
+              ':hover': {
+                bgcolor: 'var(--button_hover)',
+                color: 'var(--button_hover_text)',
+              },
               width: '150px',
               height: '50px',
-              backgroundColor: 'rgba(17, 94, 130)   ',
+              backgroundColor: 'var(--button_background_color)',
               fontSize: '18px',
             }}
           >
             Buy Now
           </Button>
-          <p
-            style={{
-              fontSize: '3vh',
-              display: 'flex',
-              justifyContent: 'left',
-              color: 'red',
-            }}
-          >
-            {moneyYouNeedToPay.toFixed(2)}USD
-          </p>
         </div>
         <div id="removeAllDiv">
-          <p onClick={handleRemoveAllSubmit} className="clearAllBin">
+          <button onClick={handleRemoveAllSubmit} className="clearAllBin">
             Clear All
-          </p>
+          </button>
         </div>
       </div>
     </div>

@@ -33,8 +33,12 @@ function Search() {
           variant="contained"
           type="submit"
           sx={{
+            ':hover': {
+              bgcolor: 'var(--button_hover)',
+              color: 'var(--button_hover_text)',
+            },
             width: '100px',
-            backgroundColor: '#2FA4FF',
+            backgroundColor: 'var(--button_background_color)',
             fontSize: 'small',
           }}
         >
@@ -53,7 +57,9 @@ function Search() {
               <p>
                 {product.title}
                 <br></br>
-                <div style={{ color: 'red' }}>{product.price} USD</div>
+                <div style={{ color: 'var(  --text_color: #353535)' }}>
+                  {product.price} USD
+                </div>
               </p>
             </div>
           ))

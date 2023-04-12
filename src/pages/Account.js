@@ -55,8 +55,12 @@ export default function Account() {
               variant="contained"
               type="submit"
               sx={{
+                ':hover': {
+                  bgcolor: 'var(--button_hover)',
+                  color: 'var(--button_hover_text)',
+                },
                 width: '100px',
-                backgroundColor: '#2FA4FF',
+                backgroundColor: 'var(--button_background_color)',
               }}
             >
               Log-out
@@ -64,7 +68,10 @@ export default function Account() {
           </div>
         </form>
       </div>
-      <div>
+      <div
+        className="cart"
+        style={{ width: '50%', marginRight: '25%', marginLeft: '25%' }}
+      >
         <p className="centerText">
           Change your password if you`d like to be extra safe :)
         </p>
@@ -86,6 +93,7 @@ export default function Account() {
                 color="secondary"
                 size="small"
                 type="password"
+                style={{ display: 'flex', justifyContent: 'center' }}
               />
               <TextField
                 onChange={(e) => setNewPassword(e.target.value)}
@@ -101,7 +109,14 @@ export default function Account() {
               <Button
                 variant="contained"
                 type="submit"
-                sx={{ width: '150px', backgroundColor: '#2FA4FF' }}
+                sx={{
+                  ':hover': {
+                    bgcolor: 'var(--button_hover)',
+                    color: 'var(--button_hover_text)',
+                  },
+                  width: '150px',
+                  backgroundColor: 'var(--button_background_color)',
+                }}
               >
                 Change Password
               </Button>

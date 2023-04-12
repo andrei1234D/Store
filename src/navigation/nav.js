@@ -10,14 +10,12 @@ export default function Nav() {
         <Link to="/" className="link">
           <li>Home</li>
         </Link>
+        <Link to="/search" className="link">
+          <li>Search</li>
+        </Link>
         {localStorage.getItem('isLoggedIn') !== 'true' && (
           <Link to="/login" className="link">
             <li>Login</li>
-          </Link>
-        )}
-        {localStorage.getItem('isLoggedIn') === 'true' && (
-          <Link to="/search" className="link">
-            <li>Search</li>
           </Link>
         )}
         {localStorage.getItem('isLoggedIn') === 'true' && (

@@ -1,10 +1,49 @@
 * {
   -ms-overflow-style: none;
+  transition: all 0.3s ease-in-out;
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
+:root {
+  --body_background: #fff9e3;
+  --link_color: cyan;
+  --button_background_color: #9a7b4f;
+  --text_color: black;
+  --border_color: black;
+  --button_hover: #ce7853;
+  --button_hover_text: black;
+  --nav_color: #e7decc;
+  --main_background_color: white;
+  --bin_color: #b2beb5;
+}
+[data-theme='dark'] {
+  --body_background: #59788e;
+  --link_color: cyan;
+  --button_background_color: #2832c2;
+  --text_color: black;
+  --border_color: navy;
+  --button_hover: #1560bd;
+  --button_hover_text: black;
+  --nav_color: #281e5d;
+  --main_background_color: white;
+  --bin_color: #1f456e;
+}
+[data-theme='light'] {
+  --body_background: #fff9e3;
+  --link_color: cyan;
+  --button_background_color: #9a7b4f;
+  --text_color: black;
+  --border_color: black;
+  --button_hover: #ce7853;
+  --button_hover_text: black;
+  --nav_color: #e7decc;
+  --main_background_color: white;
+  --bin_color: #b2beb5;
+}
+
 body {
-  background-color: rgba(6, 115, 241, 0.5);
+  background-color: var(--body_background);
+  color: var(--text_color);
 }

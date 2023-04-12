@@ -69,14 +69,20 @@ function ProductPage() {
           <h1>Price:{data.price}USD</h1>
         </div>
         <div className="buyNow" onSubmit={handleSubmit}>
-          <p style={{ color: 'red' }}>{data.price}USD</p>
+          <p style={{ color: 'var(  --text_color: #353535)' }}>
+            {data.price}USD
+          </p>
           <Button
             variant="contained"
             onClick={handleSubmit}
             sx={{
+              ':hover': {
+                bgcolor: 'var(--button_hover)',
+                color: 'var(--button_hover_text)',
+              },
               width: '200px',
               height: '75px',
-              backgroundColor: 'rgba(17, 94, 130)   ',
+              backgroundColor: 'var(--button_background_color)   ',
               fontSize: '18px',
             }}
           >

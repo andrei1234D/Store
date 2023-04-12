@@ -124,7 +124,14 @@ export default function Register() {
             <Button
               variant="contained"
               type="submit"
-              sx={{ width: '100px', backgroundColor: '#2FA4FF' }}
+              sx={{
+                ':hover': {
+                  bgcolor: 'var(--button_hover)',
+                  color: 'var(--button_hover_text)',
+                },
+                width: '100px',
+                backgroundColor: 'var(--button_background_color)',
+              }}
             >
               Login
             </Button>

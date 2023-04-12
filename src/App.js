@@ -13,6 +13,7 @@ import ProductPage from './pages/ProductPage';
 import ProductImage from './pages/ProductImage';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
+import DarkMode from './DarkMode/DarkMode';
 
 //Router imports
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -22,13 +23,14 @@ function App() {
     <div>
       <Router>
         <Nav />
+        <DarkMode />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<ProductPage />} />
-          <Route path="/product/:id/:url" element={<ProductImage />} />
+          <Route path="/search" element={<Search />} />
           <Route element={<ProtectedRoutes />}>
-            <Route path="/search" element={<Search />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/product/:id/:url" element={<ProductImage />} />
             <Route path="/account" element={<Account />} />
             <Route path="/productDetails" element={<ProductDetails />} />
             <Route path="/Cart" element={<Cart />} />

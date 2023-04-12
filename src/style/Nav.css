@@ -3,7 +3,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   min-height: 10vh;
-  background: #ff5733;
+  background: var(--nav_color);
 }
 .nav-links {
   width: 50%;
@@ -15,10 +15,10 @@ nav {
 }
 .link {
   text-decoration: none;
-  color: black;
+  color: var(--text_color);
 }
 .cartLink {
   text-decoration: none;
-  color: black;
+  color: var(--text_color);
   list-style: none;
 }
