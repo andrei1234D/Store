@@ -25,7 +25,6 @@
   font-size: 30px;
   cursor: pointer;
   color: var(--text_color);
-  font-family: 'Zen Dots';
 }
 .quantityChange {
   cursor: pointer;

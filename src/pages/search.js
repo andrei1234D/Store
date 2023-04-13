@@ -8,6 +8,7 @@ import axios from 'axios';
 
 function Search() {
   const [data, setData] = useState([]);
+  const [query, setQuery] = useState();
 
   useEffect(() => {
     axios({
