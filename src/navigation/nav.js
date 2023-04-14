@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import '../style/Nav.css';
 
 export default function Nav() {
+  let cartProducts = localStorage.getItem('numberOfCartItems');
   return (
     <nav>
       <ul className="nav-links">
@@ -27,7 +28,25 @@ export default function Nav() {
       {localStorage.getItem('isLoggedIn') === 'true' && (
         <Link to="/cart" className="cartLink">
           <li>
-            <AiOutlineShoppingCart size={50} />
+            <div style={{ display: 'flex', margin: '0 auto' }}>
+              {Number(localStorage.getItem('numberOfCartItems')) >= 1 && (
+                <div
+                  style={{
+                    marginTop: 'auto',
+                    color: 'red',
+                    borderStyle: 'solid',
+                    borderRadius: '30px',
+                    padding: '10%',
+                    borderColor: 'white',
+                  }}
+                >
+                  {cartProducts}
+                </div>
+              )}
+              <div>
+                <AiOutlineShoppingCart size={50} />
+              </div>
+            </div>
           </li>
         </Link>
       )}

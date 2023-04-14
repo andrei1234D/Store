@@ -8,8 +8,6 @@ import axios from 'axios';
 
 function Search() {
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState();
-
   useEffect(() => {
     axios({
       method: 'GET',
@@ -18,6 +16,19 @@ function Search() {
       setData(res.data);
     });
   }, []);
+  const tracks = data;
+
+  const items = tracks;
+  const getFilteredItems = (query, items) => {
+    if (!query.toLowerCase()) {
+      return items;
+    }
+    return items.filter((song) =>
+      song.title.toLowerCase().includes(query.toLowerCase())
+    );
+  };
+  const [query, setQuery] = useState('');
+  const filteredItems = getFilteredItems(query, items);
   return (
     <div>
       <div className="centerSearch">
@@ -27,28 +38,12 @@ function Search() {
           variant="filled"
           color="secondary"
           size="small"
+          onChange={(e) => setQuery(e.target.value)}
         />
       </div>
-      <div className="centerSearch">
-        <Button
-          variant="contained"
-          type="submit"
-          sx={{
-            ':hover': {
-              bgcolor: 'var(--button_hover)',
-              color: 'var(--button_hover_text)',
-            },
-            width: '100px',
-            backgroundColor: 'var(--button_background_color)',
-            fontSize: 'small',
-          }}
-        >
-          Search
-        </Button>
-      </div>
       <div className="productContainer">
-        {data.length !== 0 ? (
-          data.map((product) => (
+        {filteredItems.length !== 0 ? (
+          filteredItems?.map((product) => (
             <div key={product.id} className="card">
               <div>
                 <Link to={`/product/${product.id}`}>
@@ -65,13 +60,14 @@ function Search() {
             </div>
           ))
         ) : (
-          <p
+          <pre
             style={{
               fontSize: '50px',
+              alignItems: 'center',
             }}
           >
-            Loading...
-          </p>
+            No Products Found
+          </pre>
         )}
       </div>
     </div>

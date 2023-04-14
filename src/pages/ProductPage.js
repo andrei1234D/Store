@@ -53,7 +53,7 @@ function ProductPage() {
 
     localStorage.setItem('CartItems', JSON.stringify(productCart));
 
-    navigate('/cart');
+    navigate('/Search');
   };
 
   return (

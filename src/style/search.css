@@ -16,7 +16,6 @@
   flex-direction: column;
 }
 .productContainer {
-  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
@@ -27,6 +26,7 @@
   border-width: 5px;
   margin-left: 15%;
   height: auto;
+  min-height: 300px;
   margin-top: 3%;
   width: 70%;
   margin-right: 15%;
