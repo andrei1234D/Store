@@ -18,8 +18,6 @@
   font-size: 45px;
 }
 .buyNow {
-  display: flex;
-  justify-content: bottom;
   margin-left: auto;
   bottom: 0px;
   margin-top: auto;

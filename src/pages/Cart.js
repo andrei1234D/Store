@@ -1,13 +1,13 @@
 import '../style/Cart.css';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import React, { useReducer } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { ImBin } from 'react-icons/im';
 import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai';
 
 function Cart() {
   const navigate = useNavigate();
-
+  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
   let products = JSON.parse(localStorage.getItem('CartItems'));
   let moneyYouNeedToPay = 0;
   if (!products || products?.length === 0) {
@@ -31,7 +31,7 @@ function Cart() {
     products = products.filter((itemToRemove) => itemToRemove.productId !== id);
     localStorage.setItem('CartItems', JSON.stringify(products));
 
-    navigate('/cart');
+    forceUpdate();
   };
 
   const handleAddSubmit = (id) => {
@@ -41,7 +41,7 @@ function Cart() {
 
     localStorage.setItem('CartItems', JSON.stringify(products));
 
-    navigate('/cart');
+    forceUpdate();
   };
   const handleSubtractSubmit = (id) => {
     products.forEach((item) => {
@@ -55,14 +55,14 @@ function Cart() {
 
     localStorage.setItem('CartItems', JSON.stringify(products));
 
-    navigate('/cart');
+    forceUpdate();
   };
 
   const handleRemoveAllSubmit = (e) => {
     e.preventDefault();
 
     localStorage.setItem('CartItems', '[]');
-    navigate('/cart');
+    forceUpdate();
   };
 
   return (

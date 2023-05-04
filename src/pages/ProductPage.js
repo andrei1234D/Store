@@ -10,7 +10,7 @@ function ProductPage() {
   const [data, setData] = useState([]);
 
   const params = useParams();
-  let id = Object.values(params);
+  let id = Object.values(params)[0]; // fix the id value extraction
   useEffect(() => {
     axios({
       method: 'GET',
@@ -18,7 +18,8 @@ function ProductPage() {
     }).then((res) => {
       setData(res.data);
     });
-  }, []);
+  }, [id]); // add id to the dependency list
+
   let product = {
     productId: Number(id),
     title: data.title,
@@ -26,7 +27,9 @@ function ProductPage() {
     image: data.image,
     quantity: 1,
   };
-  if (product.title < 1) {
+
+  if (!data.title) {
+    // change the condition to check if title is empty
     return (
       <div>
         <h1>Loading</h1>
@@ -68,26 +71,46 @@ function ProductPage() {
           <br></br>
           <h1>Price:{data.price}USD</h1>
         </div>
-        <div className="buyNow" onSubmit={handleSubmit}>
-          <p style={{ color: 'var(  --text_color: #353535)' }}>
-            {data.price}USD
-          </p>
-          <Button
-            variant="contained"
-            onClick={handleSubmit}
-            sx={{
-              ':hover': {
-                bgcolor: 'var(--button_hover)',
-                color: 'var(--button_hover_text)',
-              },
-              width: '200px',
-              height: '75px',
-              backgroundColor: 'var(--button_background_color)   ',
-              fontSize: '18px',
-            }}
-          >
-            Add To Cart
-          </Button>
+        <div className="buyNow">
+          <form onSubmit={handleSubmit}>
+            {' '}
+            {/* wrap the div with form tag */}
+            <div
+              id="bottomBuyNowDiv"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                id="buyNowPrice"
+                style={{
+                  color: 'var(  --text_color: #353535)',
+                }}
+              >
+                {data.price}
+                <br></br>USD
+              </div>
+              <Button
+                type="submit" // add type attribute with value submit
+                variant="contained"
+                sx={{
+                  ':hover': {
+                    bgcolor: 'var(--button_hover)',
+                    color: 'var(--button_hover_text)',
+                  },
+                  width: '200px',
+                  height: '75px',
+                  backgroundColor: 'var(--button_background_color)   ',
+                  fontSize: '18px',
+                  fontFamily: 'Zen Dots',
+                  marginLeft: '2%',
+                }}
+              >
+                Add To Cart
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,10 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import '../style/Nav.css';
 
 export default function Nav() {
-  let cartProducts = localStorage.getItem('numberOfCartItems');
+  let cartProducts = JSON.parse(localStorage.getItem('CartItems'));
+  const [cartCount, setCartCount] = useState(0);
+  function quantity(array) {
+    let quantity = 0;
+    array.forEach((element) => {
+      quantity = quantity + element.quantity;
+      console.log(quantity);
+    });
+    return quantity;
+  }
   return (
     <nav>
       <ul className="nav-links">
@@ -29,7 +39,7 @@ export default function Nav() {
         <Link to="/cart" className="cartLink">
           <li>
             <div style={{ display: 'flex', margin: '0 auto' }}>
-              {Number(localStorage.getItem('numberOfCartItems')) >= 1 && (
+              {cartProducts.length >= 1 && (
                 <div
                   style={{
                     marginTop: 'auto',
@@ -40,7 +50,7 @@ export default function Nav() {
                     borderColor: 'white',
                   }}
                 >
-                  {cartProducts}
+                  {quantity(cartProducts)}
                 </div>
               )}
               <div>
