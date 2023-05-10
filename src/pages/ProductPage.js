@@ -73,8 +73,6 @@ function ProductPage() {
         </div>
         <div className="buyNow">
           <form onSubmit={handleSubmit}>
-            {' '}
-            {/* wrap the div with form tag */}
             <div
               id="bottomBuyNowDiv"
               style={{

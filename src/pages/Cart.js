@@ -4,6 +4,8 @@ import React, { useReducer } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { ImBin } from 'react-icons/im';
 import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai';
+import { useContext } from 'react';
+import '../context/CartContext';
 
 function Cart() {
   const navigate = useNavigate();

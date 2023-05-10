@@ -6,12 +6,10 @@ import '../style/Nav.css';
 
 export default function Nav() {
   let cartProducts = JSON.parse(localStorage.getItem('CartItems'));
-  const [cartCount, setCartCount] = useState(0);
   function quantity(array) {
     let quantity = 0;
     array.forEach((element) => {
       quantity = quantity + element.quantity;
-      console.log(quantity);
     });
     return quantity;
   }
